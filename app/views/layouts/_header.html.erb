@@ -17,7 +17,8 @@
         <li><%= link_to "About", pages_about_path %></li>
         <li><%= link_to "Contact", pages_contact_path %></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
+            <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -36,15 +37,23 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><%= link_to "Manage Listings", seller_path %></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+             aria-expanded="false">Settings<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <% if user_signed_in? %>
+                <div align="center">
+                  <li><p class="user"><strong><%= current_user.name %></strong></p></li>
+                  <li><%= link_to "View Profile", user_registration_path %></li>
+                  <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                  <li role="separator" class="divider"></li>
+                  <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+                <li><%= link_to "Sign In", new_user_session_path %></li>
+                <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% end %>
+            </div>
           </ul>
         </li>
       </ul>
