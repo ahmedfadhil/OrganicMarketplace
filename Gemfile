@@ -5,7 +5,7 @@ ruby "2.2.1"
 gem 'rails', '4.2.5.1'
 
 # Datatable
-gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 # Bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3.6'
