@@ -8,25 +8,33 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">OrganicMarketplace</a>
+
+      <%= link_to "OrganicMarketplace", root_path, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to "About", pages_about_path %></li>
-        <li><%= link_to "Contact", pages_contact_path %></li>
+        <li><%= link_to t('navbar.about'), pages_about_path %></li>
+        <li><%= link_to t('navbar.contact'), pages_contact_path %></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+             aria-expanded="false"><%= t('navbar.language') %>
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+
+            <li><%= link_to t('navbar.english'), root_path(locale: 'en') %></li>
+            <li><%= link_to t('navbar.italian'), root_path(locale: 'it') %></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+             aria-expanded="false"><%= t('navbar.categories') %>
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% Category.all.each do |category| %>
+                <li><%= link_to category.name, listings_path(category: category.name) %></li>
+            <% end %>
           </ul>
         </li>
       </ul>
@@ -45,10 +53,10 @@
             <% if user_signed_in? %>
                 <div align="center">
                   <li><p class="user"><strong><%= current_user.name %></strong></p></li>
-                  <li><%= link_to "View Profile", user_registration_path %></li>
-                  <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                  <li><%= link_to "Sales History", sales_path %></li>
-                  <li><%= link_to "Purchase History", purchases_path %></li>
+                  <li><%= link_to t('navbar.user_profile'), user_registration_path %></li>
+                  <li><%= link_to t('navbar.edit_user'), edit_user_registration_path %></li>
+                  <li><%= link_to t('navbar.sales_history'), sales_path %></li>
+                  <li><%= link_to t('navbar.purchases_history'), purchases_path %></li>
 
                   <li role="separator" class="divider"></li>
                   <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

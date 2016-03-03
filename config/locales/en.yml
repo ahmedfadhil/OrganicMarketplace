@@ -20,4 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+ new_listing: New Listing
+ sold_by: Sold by %{user}
+ jumbotron_title_html: <h1>We make shopping for quality, healthy, and sustainable groceries simple and easy.</h1>
+ jumbotron_subtitle_html: <h2>We aim to make our customers proud to shop with Relay.</h2>
+ navbar:
+  about: About
+  contact: Contact
+  language: Language
+  english: English
+  italian: Italiano
+  categories: Categories
+  user_profile: View User
+  edit_user: Edit User
+  sales_history: Sales History
+  purchases_history: Purchases History
+
